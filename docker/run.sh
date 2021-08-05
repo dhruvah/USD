@@ -22,5 +22,5 @@ docker run --rm \
 			-v /tmp/.X11-unix:/tmp.X11-unix \
 			-v USDBUILD:/usr/local  \
 			-v $XAUTH:/root/.Xauthority \
-			ubuntu-focal-usd \
+			ubuntu-focal-usd-monolithic \
 			$CMD

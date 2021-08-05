@@ -1,6 +1,6 @@
 FROM ubuntu:focal
 
-LABEL description="ubuntu-focal-usd"
+LABEL description="ubuntu-focal-usd-monolithic"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -34,12 +34,14 @@ RUN pip install pyopengl pyside2
 
 # Clone and install USD
 WORKDIR /root/
-RUN git clone https://github.com/PixarAnimationStudios/USD.git
+RUN git clone https://github.com/dhruvah/USD.git
 
 # Release 21.05 (https://github.com/PixarAnimationStudios/USD/commit/090ef0d849ced875b3b99a15e454b69148ccd8e1)
-RUN cd USD && git checkout 090ef0d849ced875b3b99a15e454b69148ccd8e1
+RUN cd USD
 
-RUN python USD/build_scripts/build_usd.py --no-usdview --build-monolithic /usr/local/USD
+#  && git checkout 090ef0d849ced875b3b99a15e454b69148ccd8e1
+
+RUN python USD/build_scripts/build_monolithic.py /usr/local/USD
 
 # RUN rsync -a /usr/local/USD/ /usr/local
 ENV PYTHONPATH "${PYTHONPATH}:/usr/local/lib/python"
