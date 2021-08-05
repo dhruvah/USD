@@ -41,7 +41,7 @@ RUN cd USD
 
 #  && git checkout 090ef0d849ced875b3b99a15e454b69148ccd8e1
 
-RUN python USD/build_scripts/build_monolithic.py /usr/local/USD
+RUN python USD/build_scripts/build_usd.py --build-monolithic /usr/local/USD
 
 # RUN rsync -a /usr/local/USD/ /usr/local
 ENV PYTHONPATH "${PYTHONPATH}:/usr/local/lib/python"
